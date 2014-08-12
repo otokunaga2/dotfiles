@@ -48,7 +48,8 @@ if has('vim_starting')
     " インデントに色を付けて見やすくする
 "    NeoBundle 'nathanaelkane/vim-indent-guides'
     "tagsの生成
-    NeoBundle 'alpaca-tc/alpaca_tags'
+    "NeoBundle 'alpaca-tc/alpaca_tags'
+    NeoBundle 'szw/vim-tags'
 endif
 
 "imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -94,9 +95,25 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 end
 
+"alpaca( rails plugin's setting)
+"augroup AlpacaTags
+"autocmd!
+"  if exists(':Tags')
+"    autocmd BufWritePost Gemfile TagsBundle
+"    autocmd BufEnter * TagsSet
+"    " 毎回保存と同時更新する場合はコメントを外す
+"    "     " autocmd BufWritePost * TagsUpdate
+"  endif
+"augroup END
+"endif
 "let g:snippet#disable_runtime_snippets = { "_": 1, }
 "let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/neosnippets'
 "let g:neocomplete#enable_at_startup=1 "for startup with complete
+
+
+" vim-tags
+au BufNewFile,BufRead *.rb let g:vim_tags_project_tags_command = "ctags --languages=ruby -f ~/ruby.tags `pwd` 2>/dev/null &"
+nnoremap <C-]> g<C-]> 
 
 let g:hybrid_use_Xresources = 1
 colorscheme hybrid
