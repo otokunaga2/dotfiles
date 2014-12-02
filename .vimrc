@@ -9,13 +9,15 @@ set encoding=utf-8
 " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 set smartindent
 set nocompatible  
-
 filetype off
 
 
 if has('vim_starting')
+  set nocompatible
   set runtimepath+=~/.vim/bundle/neobundle.vim
-    call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+    "call neobundle#rc(expand('~/.vim/bundle/'))
+    call neobundle#begin(expand('~/.vim/bundle/'))
     " originalrepos on github
     NeoBundle 'Shougo/neobundle.vim'
     "vim内でスクリプトをはしらせる
@@ -50,7 +52,7 @@ if has('vim_starting')
     "tagsの生成
     "NeoBundle 'alpaca-tc/alpaca_tags'
     NeoBundle 'szw/vim-tags'
-endif
+call neobundle#end()
 
 "imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 "smap <C-k>     <Plug>(neosnippet_expand_or_jump)
