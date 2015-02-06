@@ -120,3 +120,6 @@ nnoremap <C-]> g<C-]>
 let g:hybrid_use_Xresources = 1
 colorscheme hybrid
 syntax on
+
+" do not create the swapfile
+set noswapfile
