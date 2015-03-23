@@ -1,0 +1,2 @@
+escape ^Zz #コマンドキーをデフォルトのCtrl-AからCtrl + zに変更
+hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w" #status行を常に表示する
