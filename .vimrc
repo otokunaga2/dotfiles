@@ -76,7 +76,8 @@ noremap <C-U> :Unite buffer<CR>
 noremap <C-N> :Unite -buffer-name=file file<CR>
 " " 最近使ったファイルの一覧
 noremap <C-Z> :Unite file_mru<CR>
-
+" " no highlight
+noremap <Esc><Esc> :noh
 "  
 "  " ウィンドウを分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
