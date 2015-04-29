@@ -8,6 +8,7 @@ yum install -y git openssh-server vim screen svn
 
 ##how to install Ruby & Rails
 
+##others
 
 
 
