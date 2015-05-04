@@ -1,3 +1,5 @@
-escape ^Zz #コマンドキーをデフォルトのCtrl-AからCtrl + zに変更
+escape ^Jj #コマンドキーをデフォルトのCtrl-AからCtrl + zに変更
 hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w" #status行を常に表示する
 defscrollback 1024 #set scrollback line as 1024
+startup_message off
+bind l windowlist
