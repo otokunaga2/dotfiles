@@ -17,8 +17,5 @@ filetype off
 syntax on
 "vim内のコーディングに関してはutf-8に設定
 set encoding=utf-8
-
-" 全角スペースのハイライトを設定
-function! ZenkakuSpace()
-  highlight ZenkakuSpace cterm=underline ctermfg=darkgrey gui=underline guifg=darkgrey
-endfunction
+"コピペでインデントを崩さない
+set paste
