@@ -125,3 +125,15 @@ aug MyAutoCmd
 aug END
 "}}}
 let g:quickrun_config={'*': {'split': ''}}
+
+"英語のスペルチェックを有効にする
+set spelllang=en,cjk
+"Gitのコミット時に自動でスペルチェックを有効にする
+autocmd FileType gitcommit setlocal spell
+autocmd FileType gitcommit startinsert
+
+"Vimからmanを参照するためのコマンド
+runtime ftplugin/man.vim
+nnoremap gc :<C-u>!git<space>
+
+
