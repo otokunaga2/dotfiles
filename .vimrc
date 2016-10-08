@@ -13,13 +13,13 @@ set encoding=utf-8
 " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 set autoindent
 set smartindent
-set nocompatible  
+"set nocompatible  
 filetype off
 syntax on
 "vim内のコーディングに関してはutf-8に設定
 set encoding=utf-8
 "コピペでインデントを崩さない
-set paste
+"set paste
 
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
@@ -49,8 +49,24 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundle 'vim-scripts/vim-auto-save'
   "Yet another gitk clone for Vim!
   NeoBundle 'cohama/agit.vim'
+  "Open URI with your favorite browser from your most favorite editor
+  NeoBundle 'tyru/open-browser.vim'
+  "Opens GitHub URL of current file, etc. from Vim 
+  NeoBundle 'tyru/open-browser-github.vim'
+  "Github Flavor markdown prevew
+  NeoBundle 'kannokanno/previm'
+  "vim interface to Web API
+  NeoBundle 'mattn/webapi-vim'
+  "Gist plugin(dependent web api)
+  NeoBundle 'mattn/gist-vim'
+	"Surround.vim is all about surroundings: parentheses, brackets, quotes, XML tags, and more.
+  NeoBundle 'tpope/vim-surround'
+  "Erlang indentation and syntax for Vim https://vim-erlang.github.io
+  NeoBundle "vim-erlang/vim-erlang-runtime"
+  NeoBundle 'elixir-lang/vim-elixir'
+  "setting for elixir
 call neobundle#end()
-
+"autosave enable(you don't have to command :wq)
 let g:auto_save=1
 " Required:
 filetype plugin indent on
@@ -64,7 +80,7 @@ NeoBundleCheck
 "mapping as easy regular expression
 "------------------------------------
 nmap / /\v
-
+imap >> \|><Space>
 "------------------------------------
 " vim-rails
 "------------------------------------
@@ -73,13 +89,6 @@ let g:rails_default_file='config/database.yml'
 let g:rails_level = 4
 let g:rails_mappings=1
 let g:rails_modelines=0
-" let g:rails_some_option = 1
-" let g:rails_statusline = 1
-" let g:rails_subversion=0
-" let g:rails_syntax = 1
-" let g:rails_url='http://localhost:3000'
-" let g:rails_ctags_arguments='--languages=-javascript'
-" let g:rails_ctags_arguments = ''
 function! SetUpRailsSetting()
 	nnoremap <buffer><Space>r :R<CR>
 	nnoremap <buffer><Space>a :A<CR>
@@ -100,29 +109,24 @@ aug END
 "quickrunの実行をbundle execに置き換える方法
 "let g:quickrun_config['ruby.bundle'] = { 'command': 'ruby', 'cmdopt': 'bundle exec', 'exec': '%o %c %s' }
 
-"}}}
 "------------------------------------
 " Unite-rails.vim
-"------------------------------------
-"{{{
-function! UniteRailsSetting()
-	nnoremap <buffer><C-H><C-H><C-H>  :<C-U>Unite rails/view<CR>
-	nnoremap <buffer><C-H><C-H>       :<C-U>Unite rails/model<CR>
-	nnoremap <buffer><C-H>            :<C-U>Unite rails/controller<CR>
-
-	nnoremap <buffer><C-H>c           :<C-U>Unite rails/config<CR>
-	nnoremap <buffer><C-H>s           :<C-U>Unite rails/spec<CR>
-	nnoremap <buffer><C-H>m           :<C-U>Unite rails/db -input=migrate<CR>
-	nnoremap <buffer><C-H>l           :<C-U>Unite rails/lib<CR>
-	nnoremap <buffer><expr><C-H>g     ':e '.b:rails_root.'/Gemfile<CR>'
-	nnoremap <buffer><expr><C-H>r     ':e '.b:rails_root.'/config/routes.rb<CR>'
-	nnoremap <buffer><expr><C-H>se    ':e '.b:rails_root.'/db/seeds.rb<CR>'
-	nnoremap <buffer><C-H>ra          :<C-U>Unite rails/rake<CR>
-	nnoremap <buffer><C-H>h           :<C-U>Unite rails/heroku<CR>
-endfunction
-aug MyAutoCmd
-	au User Rails call UniteRailsSetting()
-aug END
+""------------------------------------
+"function! UniteRailsSetting()
+"	nnoremap <buffer><C-H><C-H><C-H>  :<C-U>Unite rails/view<CR>
+"	nnoremap <buffer><C-H><C-H>       :<C-U>Unite rails/model<CR>
+"	nnoremap <buffer><C-H>            :<C-U>Unite rails/controller<CR>
+"
+"	nnoremap <buffer><C-H>c           :<C-U>Unite rails/config<CR>
+"	nnoremap <buffer><C-H>s           :<C-U>Unite rails/spec<CR>
+"	nnoremap <buffer><C-H>m           :<C-U>Unite rails/db -input=migrate<CR>
+"	nnoremap <buffer><C-H>l           :<C-U>Unite rails/lib<CR>
+"	nnoremap <buffer><expr><C-H>g     ':e '.b:rails_root.'/Gemfile<CR>'
+"	nnoremap <buffer><expr><C-H>r     ':e '.b:rails_root.'/config/routes.rb<CR>'
+"	nnoremap <buffer><expr><C-H>se    ':e '.b:rails_root.'/db/seeds.rb<CR>'
+"	nnoremap <buffer><C-H>ra          :<C-U>Unite rails/rake<CR>
+"	nnoremap <buffer><C-H>h           :<C-U>Unite rails/heroku<CR>
+"endfunction
 "}}}
 let g:quickrun_config={'*': {'split': ''}}
 
@@ -136,4 +140,37 @@ autocmd FileType gitcommit startinsert
 runtime ftplugin/man.vim
 nnoremap gc :<C-u>!git<space>
 
+
+"------------------------------------
+" (plugin)OpenBrowser setting
+" github管理下のファイル上でgoとノーマルモードで入力すると
+" GitHubページを開くことができる
+"------------------------------------
+nnoremap go :<C-u>OpenGithubFile<CR>
+xnoremap go :OpenGithubFile<CR>
+
+
+"------------------------------------
+" (plugin)Gist setting
+" commands
+" - post関連
+" :Gist => publicなgistとしてアップロード
+" :Gist -p privateなgistとしてアップロード
+" :Gist -a 匿名ユーザで投稿
+" :Gist -m Vimで開いているすべてのバッファのファイルを一度にアップロード
+" - 閲覧系
+" :Gist -l 自分のuploadしたgist
+" :Gist -ls startをつけたgist一覧
+" :Gist -l ユーザ名 ユーザ名さんのアップロードしたgist一覧
+"------------------------------------
+"for linux
+"let g:gist_cliip_command = 'xclip -selection clipboard'
+"for mac
+let g:gist_cliip_command = 'pbcopy'
+"upload時にブラウザで開きたい場合
+let g:gist_open_browser_after_post = 1
+"w!でgist更新
+let g:gist_update_on_write = 2
+" for erlang
+"------------------------------------
 
