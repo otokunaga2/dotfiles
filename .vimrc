@@ -12,29 +12,9 @@ endif
 execute 'set runtimepath^=' . s:dein_repo_dir
 
 call dein#begin(s:dein_dir)
-
-call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/vimfiler.vim')
-call dein#add('Shougo/vimproc', {'build': 'make'})
-
-call dein#add('Shougo/deoplete.nvim')
-call dein#add('zchee/deoplete-go', {'build': 'make'})
-
-call dein#add('itchyny/lightline.vim')
-
-call dein#add('Shougo/unite.vim')
-call dein#add('ujihisa/unite-colorscheme')
-
-call dein#add('tomasr/molokai')
-
-call dein#add('scrooloose/syntastic')
-
-call dein#add('Shougo/vimshell.vim')
-call dein#add('thinca/vim-quickrun')
-
-call dein#add('jiangmiao/auto-pairs')
-
-call dein#add('fatih/vim-go')
+  "管理するプラグインを記述したファイル
+  let s:toml = '~/.dein.toml'
+  call dein#load_toml(s:toml, {'lazy': 0})
 
 call dein#end()
 
