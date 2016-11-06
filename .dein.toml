@@ -1,43 +1,22 @@
 [[plugins]]
-'Shougo/dein.vim'
+repo = 'Shougo/dein.vim'
 
 [[plugins]]
-'Shougo/vimfiler.vim'
+repo = 'Shougo/vimfiler.vim'
 
 [[plugins]]
-'Shougo/vimproc'
+repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-'Shougo/deoplete.nvim'
+repo = 'fatih/vim-go'
 
 [[plugins]]
-'zchee/deoplete-go'
-build = 'make'
+repo = 'tomasr/molokai'
 
 [[plugins]]
-'itchyny/lightline.vim'
+repo = 'Shougo/unite.vim'
 
 [[plugins]]
-'Shougo/unite.vim'
+repo = 'thinca/vim-quickrun'
 
-[[plugins]]
-'ujihisa/unite-colorscheme'
-
-[[plugins]]
-'tomasr/molokai'
-
-[[plugins]]
-'scrooloose/syntastic'
-
-[[plugins]]
-'Shougo/vimshell.vim'
-
-[[plugins]]
-'thinca/vim-quickrun'
-
-[[plugins]]
-'jiangmiao/auto-pairs'
-
-[[plugins]]
-'fatih/vim-go'
