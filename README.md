@@ -1,7 +1,8 @@
-# なにこれ？
-自分専用のdotfiles
-
-#動かしている環境
-
-主にMac, CentOS
-
+# This is my dot files
+- Bash
+- Ruby
+ - gemrc
+- Vim
+ - NeoVim
+ - Vim(8.0>)
+- tmux
