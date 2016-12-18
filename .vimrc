@@ -3,6 +3,7 @@ if &compatible
   set nocompatible
 endif
 
+"set dein
 let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
@@ -29,43 +30,37 @@ endif
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 
-" deoplete-go
+"" deoplete-go
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 
-"encoding
+"set background theme and config
 set encoding=utf8
-
-" molokai
 syntax on
 colorscheme molokai
 highlight Normal ctermbg=none
 let g:molokai_original = 1
 let g:rehash256 = 1
+set title
+set noshowmode
+set number
 
-" vim-go
+"for programming langs
+"" go
 let g:go_fmt_command = "goimports"
-
-" Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" vim
-set title
-set noshowmode
-set number
-" ruby
+"" ruby
 set tabstop=2
 set autoindent
 set expandtab
-" ruby
 set shiftwidth=2
 
 " Enable filetype plugins
@@ -99,27 +94,27 @@ endfunction "}}}
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2 " 常にタブラインを表示
 
-" The prefix key.
+"setting tabs
+"" The prefix key.
 nnoremap    [Tag]   <Nop>
 nmap    t [Tag]
-" Tab jump
+"" Tab jump
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
-" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
+"" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
 
 map <silent> [Tag]c :tablast <bar> tabnew<CR>
-" tc 新しいタブを一番右に作る
+"" tc 新しいタブを一番右に作る
 map <silent> [Tag]x :tabclose<CR>
-" tx タブを閉じる
+"" tx タブを閉じる
 map <silent> [Tag]n :tabnext<CR>
-" tn 次のタブ
+"" tn 次のタブ
 map <silent> [Tag]p :tabprevious<CR>
-" tp 前のタブ
-"
-"
-""""""""""""""""""""setting tag jump""""""""""""""""""""""
+"" tp 前のタブ
+
+
+"setting tag jump
 nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
 nnoremap <C-k> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
-""""""""""""""""""""setting tag jump""""""""""""""""""""""
 
