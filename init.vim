@@ -4,8 +4,7 @@ if &compatible
 endif
 
 let s:dein_dir = expand('~/.cache/dein')
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim' 
 if !isdirectory(s:dein_repo_dir)
   execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
 endif
@@ -40,26 +39,26 @@ syntax on
 colorscheme molokai
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-" vim
-set title
-set noshowmode
+" vim general setting
 set number
-" ruby
-set tabstop=2
-set autoindent
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
-set shiftwidth=2
+set autoindent
+set smartindent
 
-"Vim-Go setting
+
 "
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
 " Enable filetype plugins
 filetype plugin on
+filetype indent on
+
 "
-let g:vimfiler_as_default_explorer = 1
+"  setting for programming lang
+augroup fileTypeIndent
+  autocmd!
+  autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
 

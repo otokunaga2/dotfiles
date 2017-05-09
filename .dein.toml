@@ -20,3 +20,17 @@ repo = 'Shougo/unite.vim'
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 
+[[plugins]]
+repo = 'vim-erlang/vim-erlang-tags'
+
+[[plugins]]
+repo = 'justinmk/vim-dirvish'
+
+[[plugins]]
+repo = 'vim-erlang/vim-erlang-omnicomplete'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+
+[[plugins]]
+repo = 'airblade/vim-rooter'
