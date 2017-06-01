@@ -34,3 +34,6 @@ repo = 'Shougo/denite.nvim'
 
 [[plugins]]
 repo = 'airblade/vim-rooter'
+
+[[plugins]]
+repo = 'AlessandroYorba/Alduin'
