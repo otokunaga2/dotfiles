@@ -1,0 +1,14 @@
+[user]
+	email = otokuna46@gmail.com
+	name = Seiki Tokunaga
+[alias]
+	st = status
+	#Check diff with word unit
+	difff = diff --word-diff
+	#Display log's graph 
+	graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+	#above graph's shortcut
+	gr= log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+	cm = commit
+	stt = status -uno
+
